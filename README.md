@@ -1,46 +1,54 @@
-# Ultrasound-Report-Generation
-This is the code for "Ultrasound Report Generation with Cross-Modality Feature Alignment via Unsupervised Guidance".
-We propose a novel framework for automatic ultrasound report generation, leveraging a combination of unsupervised and supervised learning methods to aid the report generation process. Our framework incorporates unsupervised learning methods to extract potential knowledge from ultrasound text reports, serving as the prior information to guide the model in aligning visual and textual features, thereby addressing the challenge of feature discrepancy. Additionally, we design a global semantic comparison mechanism to enhance the performance of generating more comprehensive and accurate medical reports.
+# 超音波報告生成
+本程式碼為「Ultrasound Report Generation with Cross-Modality Feature Alignment via Unsupervised Guidance」之實作。
+我們提出了一個新穎的自動超音波報告生成框架，結合無監督與有監督學習方法以輔助報告生成過程。該框架利用無監督學習方法從超音波文本報告中提取潛在知識，作為先驗資訊來引導模型對齊視覺與文本特徵，從而解決特徵不一致的問題。此外，我們設計了一種全域語意比較機制，以提升生成更全面且準確醫學報告的效能。
 ![image](https://github.com/LijunRio/Ultrasound-Report-Generation/assets/91274335/63fe3ae3-293a-45b1-af9a-099468c644fc)
 
-## Main Result
+## 主要結果
 ![image](https://github.com/LijunRio/Ultrasound-Report-Generation/assets/91274335/c216ef5e-8bea-4ca5-8214-de339a136861)
 
-## Implementation
-### Setting
-- set the hyperparameter and path in ./KMVE_RG/config.py.
+## 實作說明
+### 設定
+- 請於 ./KMVE_RG/config.py 設定超參數與路徑。
 
-### Run clustering
-- Run ./knowledge_Distiller/knowledge_distiller.py to obtain cluster labels.
+### 執行分群
+- 執行 ./knowledge_Distiller/knowledge_distiller.py 以獲取分群標籤。
 
-### Run training process
-- Run ./KMVE_RG/my_train.py to train the SGF.
+### 執行訓練流程
+- 執行 ./KMVE_RG/my_main.py 以訓練 SGF。
 
-## Data
-The ultrasound dataset is available at [https://drive.google.com/file/d/11Aw3_ETNBtfT1W7eWifbsaexFqSsM5BB/view?usp=drive_link](https://drive.google.com/file/d/1-Fz9J58ntoO8ZoAEKzm3fxm4jvOWrAuz/view?usp=drive_link).
-To evaluate the performance of the proposed framework on different types of ultrasound datasets, we collected three different datasets of the breast, thyroid and liver. Specifically, the breast dataset consists of 3521 patients, the thyroid dataset consists of 2474 patients, and the liver dataset consists of 1395 patients.
+## 資料集
+超音波資料集可於 [https://drive.google.com/file/d/11Aw3_ETNBtfT1W7eWifbsaexFqSsM5BB/view?usp=drive_link](https://drive.google.com/file/d/1-Fz9J58ntoO8ZoAEKzm3fxm4jvOWrAuz/view?usp=drive_link) 下載。
+為評估本框架於不同類型超音波資料集上的表現，我們收集了乳腺、甲狀腺與肝臟三種資料集。具體來說，乳腺資料集包含 3521 位病患，甲狀腺資料集包含 2474 位病患，肝臟資料集包含 1395 位病患。
 
 ![image](https://github.com/LijunRio/Ultrasound-Report-Generation/assets/91274335/d3bb3c79-7ad9-4cfa-92be-07a63734b4da)
 
-## Citation
-@inproceedings{li2022self,
-  title={A self-guided framework for radiology report generation},
-  author={Li, Jun and Li, Shibo and Hu, Ying and Tao, Huiren},
-  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-  pages={588--598},
-  year={2022},
-  organization={Springer}
-}
+## 系統運作說明
 
-@misc{li2024ultrasoundreportgenerationcrossmodality,
-      title={Ultrasound Report Generation with Cross-Modality Feature Alignment via Unsupervised Guidance}, 
-      author={Jun Li and Tongkun Su and Baoliang Zhao and Faqin Lv and Qiong Wang and Nassir Navab and Ying Hu and Zhongliang Jiang},
-      year={2024},
-      eprint={2406.00644},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2406.00644}, 
-}
+本專案是「Ultrasound Report Generation with Cross-Modality Feature Alignment via Unsupervised Guidance」的實作，主要目的是自動生成超音波醫學報告。以下簡要說明其運作流程：
 
-## Acknowledgement
-This work was supported in part by Key-Area Research and Development Program of Guangdong Province (No.2020B0909020002), National Natural Science Foundation of China (Grant No. 62003330), Shenzhen Fundamental Research Funds (Grant No. JCYJ20200109114233670, JCYJ20190807170407391), and Guangdong Provincial Key Laboratory of Computer Vision and Virtual Reality Technology, Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China. This work was also supported by Guangdong-Hong Kong-Macao Joint Laboratory of Human-Machine Intelligence-Synergy Systems, Shenzhen Institute of Advanced Technology.
+### 1. 系統架構與流程
+本系統結合了無監督與有監督學習方法，利用無監督學習從超音波報告中萃取潛在知識，並將這些知識作為先驗資訊，協助模型對齊視覺（影像）與文本（報告）特徵，解決特徵不一致的問題。系統還設計了全域語意比較機制，提升報告生成的完整性與準確性。
+
+### 2. 主要步驟
+1. **設定參數**  
+   請先在 `KMVE_RG/config.py` 設定資料路徑與超參數。
+2. **分群（知識蒸餾）**  
+   執行 `Knowledge_Distiller/knowledge_distiller.py` 進行文本分群，獲取每筆資料的分群標籤，這些標籤會作為後續模型訓練的輔助資訊。
+3. **模型訓練**  
+   執行 `KMVE_RG/my_main.py` 開始訓練報告生成模型。
+   - 影像經由視覺特徵擷取器（如 ResNet）轉成特徵向量。
+   - 報告文本經分詞與編碼，轉成詞向量。
+   - 透過 Encoder-Decoder 架構（如 Transformer）將影像特徵與文本特徵對齊，並生成報告。
+   - 訓練過程同時考慮報告生成損失、分群分類損失，以及語意相似度損失。
+4. **評估與測試**  
+   系統會自動計算 BLEU、METEOR、ROUGE、CIDEr 等指標，評估生成報告的品質。
+
+### 3. 資料集
+本專案支援乳腺、甲狀腺、肝臟三種超音波資料集，下載連結與數量詳見下方說明。
+
+### 4. 主要檔案說明
+- `KMVE_RG/config.py`：參數與路徑設定。
+- `Knowledge_Distiller/knowledge_distiller.py`：文本分群與知識蒸餾。
+- `KMVE_RG/my_main.py`：訓練主程式。
+- `KMVE_RG/models/SGF_model.py`：模型架構。
+- `KMVE_RG/modules/`：包含資料處理、特徵擷取、訓練、評估等模組。
