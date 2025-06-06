@@ -8,7 +8,7 @@
 
 ## 實作說明
 ### 設定
-- 請於 ./KMVE_RG/config.py 設定超參數與路徑。
+- 在 `KMVE_RG/config.py` 先定義 `config.base_path`，其餘路徑皆由此組合而成。
 
 ### 執行分群
 - 執行 ./knowledge_Distiller/knowledge_distiller.py 以獲取分群標籤。

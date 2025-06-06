@@ -1,14 +1,17 @@
 __author__ = 'Rio'
 from yacs.config import CfgNode as CN
+import os
 config = CN()
-config.models = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Result\Models\breast_model_best.pth'
+config.base_path = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation'
+
+config.models = os.path.join(config.base_path, 'Result', 'Models', 'breast_model_best.pth')
 
 config.dataset_name = 'Mammary'
 config.distiller_num = 5 # liver:18; Mamary:18; Thyroid:5
-config.jieba_dir = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Data\key_technical_words.txt'
-config.image_dir = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Data\Thyroid_report'
-config.ann_path = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Data\new_Thyroid2.json'
-config.technical_word = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Data\key_technical_words.txt'
+config.jieba_dir = os.path.join(config.base_path, 'Data', 'key_technical_words.txt')
+config.image_dir = os.path.join(config.base_path, 'Data', 'Thyroid_report')
+config.ann_path = os.path.join(config.base_path, 'Data', 'new_Thyroid2.json')
+config.technical_word = os.path.join(config.base_path, 'Data', 'key_technical_words.txt')
 
 config.dict_pth = ' '
 
@@ -43,8 +46,8 @@ config.decoding_constraintt = 0
 config.n_gpu = 1
 config.epochs = 30
 
-config.save_dir =  r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Result\Models'
-config.record_dir = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Result\Records'
+config.save_dir = os.path.join(config.base_path, 'Result', 'Models')
+config.record_dir = os.path.join(config.base_path, 'Result', 'Records')
 
 config.save_period = 1
 config.monitor_mode = 'max'
@@ -76,7 +79,7 @@ config.cuda = True
 config.train_smooth_gamma3 = 10.0
 config.train_smooth_gamma2 = 5.0
 config.train_smooth_gamma1 = 4.0
-config.attn_pth = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Result\Attn_pth'
+config.attn_pth = os.path.join(config.base_path, 'Result', 'Attn_pth')
 
 
 
