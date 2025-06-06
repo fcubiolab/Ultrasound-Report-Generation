@@ -7,7 +7,7 @@ config.base_path = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation
 config.models = os.path.join(config.base_path, 'Result', 'Models', 'breast_model_best.pth')
 
 config.dataset_name = 'Mammary'
-config.distiller_num = 5 # liver:18; Mamary:18; Thyroid:5
+config.distiller_num = 18 # liver:18; Mamary:18; Thyroid:5
 config.jieba_dir = os.path.join(config.base_path, 'Data', 'key_technical_words.txt')
 config.image_dir = os.path.join(config.base_path, 'Data', 'Thyroid_report')
 config.ann_path = os.path.join(config.base_path, 'Data', 'new_Thyroid2.json')
@@ -15,11 +15,11 @@ config.technical_word = os.path.join(config.base_path, 'Data', 'key_technical_wo
 
 config.dict_pth = ' '
 
-config.max_seq_length_train = 150
-config.max_seq_length = 150
+config.max_seq_length_train = 100  # Reduced from 150 to save memory
+config.max_seq_length = 100  # Reduced from 150 to save memory
 config.threshold = 3
 config.num_workers = 0
-config.batch_size = 32
+config.batch_size = 8  # Reduced from 32 to 8 to fit in 8GB GPU memory
 config.evaluate_batch = 1
 
 # Use ViT to extract visual features
@@ -28,9 +28,9 @@ config.visual_extractor_pretrained = True
 
 config.d_model = 512
 config.d_ff = 512
-config.d_vf = 2048
+config.d_vf = 768  # Changed from 2048 to 768 to match ViT base embedding dimension
 config.num_heads = 8
-config.num_layers = 3
+config.num_layers = 2  # Reduced from 3 to 2 layers to save memory
 config.dropout = 0.1
 config.logit_layers = 1
 config.bos_idx = 0
