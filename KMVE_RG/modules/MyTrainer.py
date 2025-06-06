@@ -66,7 +66,7 @@ class BaseTrainer(object):
     def train(self):
         not_improved_count = 0
         df = None
-        path = r'E:\20250606\Ultrasound-Report-Generation\Result\log.csv'
+        path = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Result\log.csv'
         for epoch in range(self.start_epoch, self.epochs + 1):
             result = self._train_epoch(epoch)
             log = {'epoch': epoch}
@@ -293,7 +293,7 @@ class Trainer(BaseTrainer):
                                         {i: [re] for i, re in enumerate(test_res)})
 
             df = pd.concat([df, pd.Series(test_met)], ignore_index=True)
-            filen_name = r'E:\20250606\Ultrasound-Report-Generation\Result\test_restult_{}.csv'.format(epoch)
+            filen_name = r'C:\Users\user\Documents\GitHub\Ultrasound-Report-Generation\Result\test_restult_{}.csv'.format(epoch)
             df.to_csv(filen_name, index=False, encoding='utf-8-sig')
             log.update(**{'test_' + k: v for k, v in test_met.items()})
 
