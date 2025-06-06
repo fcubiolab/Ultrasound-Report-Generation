@@ -1,14 +1,14 @@
 __author__ = 'Rio'
 from yacs.config import CfgNode as CN
 config = CN()
-config.models = 'E:/Captionv0/Code/SGF/Result/Models/breast_model_best.pth'
+config.models = r'E:\20250606\Ultrasound-Report-Generation\Result\Models\breast_model_best.pth'
 
 config.dataset_name = 'Mammary'
 config.distiller_num = 5 # liver:18; Mamary:18; Thyroid:5
-config.jieba_dir = 'E:/Captionv0/Code/SGF/Data/key_technical_words.txt'
-config.image_dir = 'E:/Datasets/Ultrasound/Data/Thyroid_report'
-config.ann_path = 'E:/Datasets/Ultrasound/Data/new_Thyroid2.json'
-config.technical_word = ''E:/Captionv0/Code/SGF/Data/key_technical_words.txt''
+config.jieba_dir = r'E:\20250606\Ultrasound-Report-Generation\Data\key_technical_words.txt'
+config.image_dir = r'E:\20250606\Ultrasound-Report-Generation\Data\Thyroid_report'
+config.ann_path = r'E:\20250606\Ultrasound-Report-Generation\Data\new_Thyroid2.json'
+config.technical_word = r'E:\20250606\Ultrasound-Report-Generation\Data\key_technical_words.txt'
 
 config.dict_pth = ' '
 
@@ -40,10 +40,10 @@ config.output_logsoftmax = 1
 config.decoding_constraintt = 0
 
 config.n_gpu = 1
-config.epochs = 50
+config.epochs = 30
 
-config.save_dir = 'E:/Captionv0/Code/SGF/Result/Models'
-config.record_dir = 'E:/Captionv0/Code/SGF/Result/Records'
+config.save_dir =  r'E:\20250606\Ultrasound-Report-Generation\Result\Models'
+config.record_dir = r'E:\20250606\Ultrasound-Report-Generation\Result\Records'
 
 config.save_period = 1
 config.monitor_mode = 'max'
@@ -75,7 +75,7 @@ config.cuda = True
 config.train_smooth_gamma3 = 10.0
 config.train_smooth_gamma2 = 5.0
 config.train_smooth_gamma1 = 4.0
-config.attn_pth = 'E:/Captionv0/Code/SGF/Result/Attn_pth'
+config.attn_pth = r'E:\20250606\Ultrasound-Report-Generation\Result\Attn_pth'
 
 
 

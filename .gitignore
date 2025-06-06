@@ -1,0 +1,12 @@
+Data
+venv
+KMVE_RG/__pycache__
+KMVE_RG/modules/__pycache__
+KMVE_RG/models/__pycache__
+KMVE_RG/pycocoevalcap/__pycache__
+KMVE_RG/pycocoevalcap/bleu/__pycache__
+KMVE_RG/pycocoevalcap/cider/__pycache__
+KMVE_RG/pycocoevalcap/meteor/__pycache__
+KMVE_RG/pycocoevalcap/rouge/__pycache__
+KMVE_RG/pycocoevalcap/tokenizer/__pycache__
+Result
