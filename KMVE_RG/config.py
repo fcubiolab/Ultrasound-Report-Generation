@@ -19,7 +19,8 @@ config.num_workers = 0
 config.batch_size = 32
 config.evaluate_batch = 1
 
-config.visual_extractor = 'resnet101'
+# Use ViT to extract visual features
+config.visual_extractor = 'vit_base_patch16_224'
 config.visual_extractor_pretrained = True
 
 config.d_model = 512
