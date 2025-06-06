@@ -47,7 +47,7 @@ class SemanticEmbedding(nn.Module):
 
 
 class classfication(nn.Module):
-    def __init__(self, distiller_num, avg_dim=1024):
+    def __init__(self, distiller_num, avg_dim=512):  # 改為 512 以匹配 ViT 的 d_model
         super(classfication, self).__init__()
         self.logit = nn.Linear(avg_dim, distiller_num)
         self.relu = nn.ReLU()

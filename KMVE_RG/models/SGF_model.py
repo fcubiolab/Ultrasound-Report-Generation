@@ -5,7 +5,9 @@ import numpy as np
 import sys
 
 sys.path.append('../')
-from modules.visual_extractor import VisualExtractor
+# 使用 ViT 版本的視覺特徵提取器
+from modules.visual_extractor_vit import VisualExtractorViT, VisualExtractorViTLarge, VisualExtractorViTCustom
+# from modules.visual_extractor import VisualExtractor  # 原始 CNN 版本
 from modules.encoder_decoder import EncoderDecoder
 from torch.autograd import Variable
 from modules.new_model_utils import SemanticEmbedding, classfication
@@ -16,10 +18,20 @@ class SGF(nn.Module):
         super(SGF, self).__init__()
         self.args = args
         self.tokenizer = tokenizer
-        self.visual_extractor = VisualExtractor(args)
+        
+        # 根據配置選擇 ViT 模型類型
+        vit_model_type = getattr(args, 'vit_model_type', 'base')
+        if vit_model_type == 'large':
+            self.visual_extractor = VisualExtractorViTLarge(args)
+        elif vit_model_type == 'custom':
+            self.visual_extractor = VisualExtractorViTCustom(args)
+        else:  # 默認使用 base
+            self.visual_extractor = VisualExtractorViT(args)
+            
         self.encoder_decoder = EncoderDecoder(args, tokenizer)
         self.classfication_layers = classfication(distiller_num = self.args.distiller_num)
         print('vocabulary size:', self.tokenizer.get_vocab_size())
+        print(f'Using ViT model type: {vit_model_type}')
         # self.forward = self._forward_inference
 
     def __str__(self):

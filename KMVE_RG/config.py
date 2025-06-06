@@ -22,6 +22,18 @@ config.evaluate_batch = 1
 config.visual_extractor = 'resnet101'
 config.visual_extractor_pretrained = True
 
+# ViT 相關配置
+config.use_vit = True  # 是否使用 ViT
+config.vit_model_type = 'base'  # 'base', 'large', 'custom'
+config.freeze_vit_layers = 0  # 凍結的 ViT 層數，0 表示不凍結
+config.use_extra_pos_encoding = False  # 是否使用額外位置編碼
+
+# 自定義 ViT 配置 (當 vit_model_type='custom' 時使用)
+config.vit_hidden_size = 768
+config.vit_num_layers = 12
+config.vit_num_heads = 12
+config.vit_intermediate_size = 3072
+
 config.d_model = 512
 config.d_ff = 512
 config.d_vf = 2048
