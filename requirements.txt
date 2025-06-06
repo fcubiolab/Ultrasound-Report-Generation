@@ -1,0 +1,14 @@
+# Core dependencies
+numpy
+pandas
+scikit-learn
+pillow
+opencv-python
+jieba
+umap-learn
+yacs
+torch
+torchvision
+timm
+sentence-transformers
+tqdm
